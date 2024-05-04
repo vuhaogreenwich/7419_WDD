@@ -1,0 +1,66 @@
+<div id='home'>
+    <!-- Carousel -->
+    <div class='container-fluid'>
+        <div id='carouselExampleAutoplaying' class='carousel slide mt-3' data-bs-ride='carousel'>
+            <div class='carousel-inner'>
+                <div class='carousel-item active'>
+                    <img src='img/caurousl_01.jpeg' style="height: 600px" class='d-block w-100' alt='Boy Scout 01'>
+                </div>
+                <div class='carousel-item'>
+                    <img src='img/carousel_02.jpeg' class='d-block w-100' alt='Boy Scout 02'>
+                </div>
+                <div class='carousel-item'>
+                    <img src='img/carousel_03.jpeg' class='d-block w-100' alt='Boy Scout 03'>
+                </div>
+            </div>
+            <button class='carousel-control-prev' type='button' data-bs-target='#carouselExampleAutoplaying'
+                data-bs-slide='prev'>
+                <span class='carousel-control-prev-icon' aria-hidden='true'></span>
+                <span class='visually-hidden'>Previous</span>
+            </button>
+            <button class='carousel-control-next' type='button' data-bs-target='#carouselExampleAutoplaying'
+                data-bs-slide='next'>
+                <span class='carousel-control-next-icon' aria-hidden='true'></span>
+                <span class='visually-hidden'>Next</span>
+            </button>
+        </div>
+    </div>
+    <!-- End Carousel -->
+
+    <!-- Popular Products -->
+    <div class='fs-1 mt-5 mb-3 border-bottom border-dark text-dark'>
+        Popular Products
+    </div>
+
+    <div class='row' id='popular-product-list'></div>
+    <!-- End Popular Products -->
+
+    <!-- New Arrivals -->
+    <div class='fs-1 mt-5 mb-3 border-bottom border-dark text-dark'>
+        New Arrivals
+    </div>
+
+    <div class='row' id='new-arrival-product-list'></div>
+    <!-- End New Arrivals -->
+</div>
+
+<script>
+    pageTitle.innerHTML = 'Home';
+
+    showPopularProducts();
+    showNewArrivalProducts();
+
+    async function showPopularProducts() {
+        const productList = document.getElementById('popular-product-list');
+        const products = await dbGetProducts();
+
+        displayProducts(productList, products);
+    }
+
+    async function showNewArrivalProducts() {
+        const productList = document.getElementById('new-arrival-product-list');
+        const products = await dbGetProducts();
+
+        displayProducts(productList, products);
+    }
+</script>
